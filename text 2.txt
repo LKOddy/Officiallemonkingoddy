@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lemon King Oddy - Stay Sour</title>
+<style>
+  /* Reset & basics */
+  * {
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f9e547 20%, #1d3c2e 50%, #5a2d80 80%);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+  a {
+    color: #f9e547;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #b2e000;
+  }
+
+  /* Hero section */
+  #hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 0 20px;
+    z-index: 1;
+  }
+  #hero h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #f9e547;
+    text-shadow: 0 0 15px #f9e547aa;
+    margin-bottom: 0.25em;
+  }
+  #hero p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #b9d75a;
+    margin-bottom: 1.5em;
+  }
+  #listen-btn {
+    background: #f9e547;
+    color: #1d3c2e;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 0.75em 2em;
+    border-radius: 50px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 15px #f9e547aa;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  #listen-btn:hover {
+    background: #b2e000;
+    color: #fff;
+  }
+
+  /* Floating lemon animation container */
+  #lemon-container {
+    position: absolute;
+    top: 20%;
+    left: -150px;
+    width: 150px;
+    height: 150px;
+    pointer-events: none;
+    z-index: 0;
+    animation: floatLemon 12s ease-in-out infinite;
+  }
+  @keyframes floatLemon {
+    0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+    50% { transform: translate(30vw, 20vh) rotate(10deg); opacity: 0.8; }
+    100% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  }
+
+  /* Stylized lemon SVG styling */
+  svg.lemon {
+    width: 150px;
+    height: 150px;
+    filter: drop-shadow(0 0 5px #f9e547cc);
+  }
+
+  /* Music section */
+  #music {
+    background: #1d3c2e;
+    padding: 3rem 1rem 5rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  #music h2 {
+    font-size: 2.8rem;
+    color: #f9e547;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px #f9e547aa;
+  }
+  .track {
+    margin-bottom: 2rem;
+  }
+  .platform-buttons {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .platform-buttons a {
+    color: #f9e547;
+    font-size: 1.4rem;
+    transition: color 0.3s ease;
+  }
+  .platform-buttons a:hover {
+    color: #b2e000;
+  }
+
+  /* About section */
+  #about {
+    padding: 3rem 1rem 5rem;
+    background: linear-gradient(135deg, #5a2d80 0%, #1d3c2e 100%);
+    color: #dcdcdc;
+    text-align: center;
+  }
+  #about h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #f9e547;
+    text-shadow: 0 0 10px #f9e547aa;
+  }
+  #about img {
+    max-width: 200px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 15px #f9e547aa;
+  }
+  #about p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #dcdcdccc;
+  }
+
+  /* Contact section */
+  #contact {
+    background: #1d3c2e;
+    padding: 3rem 1rem 4rem;
+    text-align: center;
+    color: #f9e547;
+  }
+  #contact h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px #f9e547aa;
+  }
+  #contact p {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  #socials {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  #socials a {
+    color: #f9e547;
+    font-size: 1.8rem;
+    transition: color 0.3s ease;
+  }
+  #socials a:hover {
+    color: #b2e000;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    #hero h1 {
+      font-size: 2.5rem;
+    }
+    #hero p {
+      font-size: 1.1rem;
+    }
+    #music h2, #about h2, #contact h2 {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<!-- FontAwesome for social icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<section id="hero">
+  <h1>Lemon King Oddy</h1>
+  <p>Stay Sour. Stay Real.</p>
+  <button id="listen-btn" onclick="document.getElementById('music').scrollIntoView({behavior:'smooth'})">Listen Now</button>
+
+  <div id="lemon-container">
+    <svg class="lemon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="url(#lemonGradient)" >
+      <defs>
+        <radialGradient id="lemonGradient" cx="30%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#f9e547" />
+          <stop offset="100%" stop-color="#b2e000" />
+        </radialGradient>
+      </defs>
+      <ellipse cx="32" cy="32" rx="22" ry="34" stroke="#aabb33" stroke-width="2" fill="url(#lemonGradient)" />
+      <path fill="none" stroke="#789922" stroke-width="2" d="M14 40 Q20 24 32 28 Q44 32 50 20" />
+      <circle cx="32" cy="32" r="3" fill="#b2e000" opacity="0.7" />
+    </svg>
+  </div>
+</section>
+
+<section id="music">
+  <h2>Music</h2>
+
+  <div class="track" id="track-can-i">
+    <h3>Can I</h3>
+    <!-- Spotify Embed -->
+    <iframe src="https://open.spotify.com/embed/track/your_can_i_spotify_id" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    <!-- SoundCloud Embed -->
+    <iframe width="300" height="80" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/your_can_i_soundcloud_id&color=%23f9e547&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+  </div>
+
+  <div id="other-tracks-container"></div>
+
+  <div class="platform-buttons" style="margin-top: 2rem;">
+    <a href="https://open.spotify.com/artist/1r7f00FvJPuBsRfjSdL2Oi" target="_blank" title="Spotify"><i class="fab fa-spotify"></i></a>
+    <a href="https://soundcloud.com/oddysseythaoddestg" target="_blank" title="SoundCloud"><i class="fab fa-soundcloud"></i></a>
+    <a href="https://music.apple.com/us/artist/lemon-king-oddy/1555140796" target="_blank" title="Apple Music"><i class="fab fa-apple"></i></a>
+    <a href="https://www.youtube.com/channel/your_channel_id" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://linktr.ee/LKOddy" target="_blank" title="Linktree"><i class="fas fa-link"></i></a>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About Lemon King Oddy</h2>
+  <img src="https://memphisvoyager.com/wp-content/uploads/2023/06/Lemon-King-Oddy-Interview.jpg" alt="Lemon King Oddy" />
+  <p>
+    Lemon King Oddy is a rising star from Memphis, TN, known for his unique blend of hip-hop and melodic vibes. With a strong brand identity rooted in the “Stay Sour” movement, Oddy has been featured in multiple interviews and shows and continues to build a dedicated fanbase across streaming platforms.
+  </p>
+</section>
+
+<section id="contact">
+  <h2>Contact & Socials</h2>
+  <p>Booking & Inquiries: <a href="mailto:sourpower1274@gmail.com" style="color:#f9e547;">sourpower1274@gmail.com</a></p>
+  <div id="socials">
+    <a href="https://open.spotify.com/artist/1r7f00FvJPuBsRfjSdL2Oi" target="_blank" title="Spotify"><i class="fab fa-spotify"></i></a>
+    <a href="https://soundcloud.com/oddysseythaoddestg" target="_blank" title="SoundCloud"><i class="fab fa-soundcloud"></i></a>
+    <a href="https://music.apple.com/us/artist/lemon-king-oddy/1555140796" target="_blank" title="Apple Music"><i class="fab fa-apple"></i></a>
+    <a href="https://www.youtube.com/channel/your_channel_id" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://linktr.ee/LKOddy" target="_blank" title="Linktree"><i class="fas fa-link"></i></a>
+  </div>
+</section>
+
+<script>
+  // Other tracks data — update these IDs with your actual track IDs for Spotify & SoundCloud
+  const tracks = [
+    {
+      title: "DISCO",
+      spotifyId: "your_disco_spotify_id",
+      soundcloudId: "your_disco_soundcloud_id",
+      tags: ["hiphop", "upbeat"]
+    },
+    {
+      title: "No Comment",
+      spotifyId: "your_nocomment_spotify_id",
+      soundcloudId: "your_nocomment_soundcloud_id",
+      tags: ["hiphop", "upbeat"]
+    },
+    {
+      title: "Follow The Signs",
+      spotifyId: "your_followthesigns_spotify_id",
+      soundcloudId: "your_followthesigns_soundcloud_id",
+      tags: []
+    },
+    {
+      title: "Gotta Be",
+      spotifyId: "your_gottabe_spotify_id",
+      soundcloudId: "your_gottabe_soundcloud_id",
+      tags: []
+    }
+    // Add more tracks here
+  ];
+
+  // Shuffle function
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+  // Build the shuffled tracks section
+  function buildTracks() {
+    const container = document.getElementById('other-tracks-container');
+    // Filter hiphop upbeat to put first after “Can I”
+    const hiphopUpbeat = tracks.filter(t => t.tags.includes("hiphop") && t.tags.includes("upbeat"));
+    const otherTracks = tracks.filter(t => !hiphopUpbeat.includes(t));
+
+    shuffle(hiphopUpbeat);
+    shuffle(otherTracks);
+
+    const orderedTracks = [...hiphopUpbeat, ...otherTracks];
+
+    orderedTracks.forEach(track => {
+      const trackDiv = document.createElement('div');
+      trackDiv.className = 'track';
+      trackDiv.innerHTML = `
+        <h3>${track.title}</h3>
+        <iframe src="https://open.spotify.com/embed/track/${track.spotifyId}" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe width="300" height="80" scrolling="no" frameborder="no" allow="autoplay"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${track.soundcloudId}&color=%23f9e547&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+      `;
+      container.appendChild(trackDiv);
+    });
+  }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    buildTracks();
+  });
+</script>
+
+</body>
+</html>
